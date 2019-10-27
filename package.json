@@ -10,13 +10,14 @@
   },
   "devDependencies": {
     "customize-cra": "0.8.0",
-    "eslint": "^6.6.0",
-    "eslint-config-airbnb": "^18.0.1",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.16.0",
-    "eslint-plugin-react-hooks": "^1.7.0",
+    "eslint": "6.6.0",
+    "eslint-config-airbnb": "18.0.1",
+    "eslint-plugin-import": "2.18.2",
+    "eslint-plugin-jsx-a11y": "6.2.3",
+    "eslint-plugin-react": "7.16.0",
+    "eslint-plugin-react-hooks": "1.7.0",
     "node-sass": "4.13.0",
+    "prettier": "1.18.2",
     "react-app-rewired": "2.1.4",
     "sass-resources-loader": "2.0.1"
   },
@@ -27,10 +28,15 @@
     "test-int": "react-app-rewired test --watchAll=false",
     "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
     "init-hooks": "node scripts/verifyHook.js",
-    "lint-js": "eslint --ext js,jsx --ignore-pattern src/**/*.d.js src/"
+    "lint-js": "eslint --ext js,jsx --ignore-pattern src/**/*.d.js src/ --fix"
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "prettier": {
+    "arrowParens": "always",
+    "singleQuote": true,
+    "trailingComma": "es5"
   },
   "browserslist": {
     "production": [

@@ -11,7 +11,11 @@ function App() {
       <header className={cx('app-header')}>
         <img src={logo} className={cx('app-logo')} alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Edit
+          {' '}
+          <code>src/App.js</code>
+          {' '}
+and save to reload.
         </p>
         <a
           className={cx('app-link')}
