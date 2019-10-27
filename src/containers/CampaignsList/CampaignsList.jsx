@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { IntlProvider } from 'react-intl';
 import matchSorter from 'match-sorter';
 import Table from '../../components/Table';
+import DatePicker from '../../components/DatePicker';
 
 class CampaignsList extends Component {
   constructor(props) {
@@ -73,10 +74,24 @@ class CampaignsList extends Component {
       {
         Header: formatMessage({ id: 'column.startDate' }),
         accessor: 'startDate',
+        Filter: ({ filter, onChange }) => (
+          <DatePicker
+            startDate={filter ? filter.value : undefined}
+            setDate={onChange}
+          />
+        ),
+        filterMethod: (filter, row) => !filter || new Date(row.startDate) >= filter.value,
       },
       {
         Header: formatMessage({ id: 'column.endDate' }),
         accessor: 'endDate',
+        Filter: ({ filter, onChange }) => (
+          <DatePicker
+            startDate={filter ? filter.value : undefined}
+            setDate={onChange}
+          />
+        ),
+        filterMethod: (filter, row) => !filter || new Date(row.endDate) <= filter.value,
       },
       {
         Header: formatMessage({ id: 'column.isActive' }),

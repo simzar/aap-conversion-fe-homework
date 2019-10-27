@@ -1,10 +1,15 @@
 import React from 'react';
 import ReactTable from 'react-table';
 import PropTypes from 'prop-types';
-import 'react-table/react-table.css';
+import './Table.scss';
 
 const Table = ({ columns, data }) => (
-  <ReactTable data={data} columns={columns} filterable />
+  <ReactTable
+    className="-striped -highlight"
+    data={data}
+    columns={columns}
+    filterable
+  />
 );
 
 Table.propTypes = {

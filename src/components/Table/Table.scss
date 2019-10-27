@@ -1,0 +1,9 @@
+@import '~react-table/react-table.css';
+
+.rt-table {
+  overflow: hidden !important;
+}
+
+.rt-th {
+  overflow: visible !important;
+}

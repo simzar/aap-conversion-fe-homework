@@ -8,5 +8,6 @@ const setCampaigns = (campaigns) => ({
 // eslint-disable-next-line import/prefer-default-export
 export const loadCampaigns = (campaigns) => (dispatch) => {
   // TODO: validate campaigns
+  // for format and date validity
   dispatch(setCampaigns(campaigns));
 };
