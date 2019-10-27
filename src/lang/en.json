@@ -7,10 +7,16 @@
     "column.userName": "User Name",
     "column.isActive": "Is Active",
 
-    "isActive.value.yes": "Yes",
-    "isActive.value.no": "No",
+    "isActive.value.yes": "Active",
+    "isActive.value.no": "Inactive",
 
-    "endDate.disabled.placeholder": "Select Start Date"
+    "endDate.disabled.placeholder": "Select Start Date",
+
+    "users.fetchError": "An error occurred. Please try loading data again",
+    "users.loading": "Loading...",
+    "users.unknownUser": "Unknown user",
+
+    "campaigns.noData": "Please load the campaigns"
   },
   "locale": "en",
   "formats": {}

@@ -14,19 +14,17 @@ const usersReducer = (state = initialState, action) => {
   switch (action.type) {
     case USERS_FETCH:
       return {
-        users: {},
+        ...initialState,
         isLoading: true,
-        isError: false,
       };
     case USERS_FETCH_SUCCESS:
       return {
+        ...initialState,
         users: action.payload,
-        isLoading: false,
       };
     case USERS_FETCH_ERROR:
       return {
-        users: {},
-        isLoading: false,
+        ...initialState,
         isError: true,
       };
     default:

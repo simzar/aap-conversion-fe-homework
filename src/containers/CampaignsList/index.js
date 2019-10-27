@@ -6,7 +6,7 @@ import { loadCampaigns } from '../../state/campaigns/campaignsActions';
 
 const mapStateToProps = (state) => ({
   campaigns: state.campaigns.campaigns,
-  users: state.users.users,
+  ...state.users,
 });
 
 const mapDispatchToProps = {

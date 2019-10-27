@@ -49,7 +49,9 @@ class CampaignsList extends Component {
     return campaigns.map((campaign) => ({
       ...campaign,
       userName:
-        campaign.userId in users ? users[campaign.userId] : 'Unknown user',
+        campaign.userId in users
+          ? users[campaign.userId]
+          : formatMessage({ id: 'users.unknownUser' }),
       isActive:
         currentDate >= new Date(campaign.startDate)
         && currentDate <= new Date(campaign.endDate)
@@ -61,6 +63,7 @@ class CampaignsList extends Component {
   constructColumns() {
     const {
       intl: { formatMessage },
+      campaigns,
     } = this.props;
     const { startDate } = this.state;
 
@@ -82,6 +85,7 @@ class CampaignsList extends Component {
         Filter: ({ filter, onChange }) => (
           <DatePicker
             startDate={filter ? filter.value : undefined}
+            disabled={campaigns.length === 0}
             setDate={(value) => this.selectStartDate(onChange, value)}
             placeholder={formatMessage({ id: 'column.startDate' })}
           />
@@ -126,10 +130,28 @@ class CampaignsList extends Component {
   }
 
   render() {
+    const {
+      isLoading,
+      isError,
+      intl: { formatMessage },
+    } = this.props;
     const campaigns = this.mapCampaigns();
     const columns = this.constructColumns();
+    const loadingText = formatMessage({
+      id: isError ? 'users.fetchError' : 'users.loading',
+    });
+    const noDataText = formatMessage({ id: 'campaigns.noData' });
 
-    return <Table columns={columns} data={campaigns} />;
+    return (
+      <Table
+        columns={columns}
+        data={campaigns}
+        isLoading={isLoading}
+        isError={isError}
+        loadingText={loadingText}
+        noDataText={noDataText}
+      />
+    );
   }
 }
 
@@ -148,6 +170,8 @@ CampaignsList.propTypes = {
   loadCampaigns: PropTypes.func.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   users: PropTypes.object.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  isError: PropTypes.bool.isRequired,
   intl: PropTypes.shape(IntlProvider.propTypes).isRequired,
 };
 
