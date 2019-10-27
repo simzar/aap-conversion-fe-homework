@@ -3,8 +3,12 @@
     "column.name": "Name",
     "column.startDate": "Start Date",
     "column.endDate": "End Date",
-    "column.Budget": "Budget",
-    "column.userName": "User Name"
+    "column.budget": "Budget",
+    "column.userName": "User Name",
+    "column.isActive": "Is Active",
+
+    "isActive.value.yes": "Yes",
+    "isActive.value.no": "No"
   },
   "locale": "en",
   "formats": {}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { IntlProvider } from 'react-intl';
 import Table from '../../components/Table';
 
 class CampaignsList extends Component {
@@ -7,6 +8,8 @@ class CampaignsList extends Component {
     super(props);
 
     this.addCampaigns = this.addCampaigns.bind(this);
+    this.mapCampaigns = this.mapCampaigns.bind(this);
+    this.constructColumns = this.constructColumns.bind(this);
   }
 
   componentDidMount() {
@@ -25,16 +28,68 @@ class CampaignsList extends Component {
     loadCampaigns(campaigns);
   }
 
-  render() {
-    const { campaigns, users } = this.props;
-    // eslint-disable-next-line no-console
-    const campaignsToRender = campaigns.map((campaign) => ({
+  mapCampaigns() {
+    const {
+      campaigns,
+      users,
+      intl: { formatMessage },
+    } = this.props;
+    const currentDate = Date.now();
+    const yesNoLabels = [
+      formatMessage({ id: 'isActive.value.yes' }),
+      formatMessage({ id: 'isActive.value.no' }),
+    ];
+
+    return campaigns.map((campaign) => ({
       ...campaign,
       userName:
         campaign.userId in users ? users[campaign.userId] : 'Unknown user',
+      isActive:
+        currentDate >= new Date(campaign.startDate)
+        && currentDate <= new Date(campaign.endDate)
+          ? yesNoLabels[0]
+          : yesNoLabels[1],
     }));
+  }
 
-    return <Table data={campaignsToRender} />;
+  constructColumns() {
+    const {
+      intl: { formatMessage },
+    } = this.props;
+
+    return [
+      {
+        Header: formatMessage({ id: 'column.name' }),
+        accessor: 'name',
+      },
+      {
+        Header: formatMessage({ id: 'column.userName' }),
+        accessor: 'userName',
+      },
+      {
+        Header: formatMessage({ id: 'column.startDate' }),
+        accessor: 'startDate',
+      },
+      {
+        Header: formatMessage({ id: 'column.endDate' }),
+        accessor: 'endDate',
+      },
+      {
+        Header: formatMessage({ id: 'column.isActive' }),
+        accessor: 'isActive',
+      },
+      {
+        Header: formatMessage({ id: 'column.budget' }),
+        accessor: 'budget',
+      },
+    ];
+  }
+
+  render() {
+    const campaigns = this.mapCampaigns();
+    const columns = this.constructColumns();
+
+    return <Table columns={columns} data={campaigns} />;
   }
 }
 
@@ -45,7 +100,7 @@ CampaignsList.propTypes = {
       name: PropTypes.string.isRequired,
       startDate: PropTypes.string.isRequired,
       endDate: PropTypes.string.isRequired,
-      Budget: PropTypes.number.isRequired,
+      budget: PropTypes.number.isRequired,
       userId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     }),
   ).isRequired,
@@ -53,6 +108,7 @@ CampaignsList.propTypes = {
   loadCampaigns: PropTypes.func.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   users: PropTypes.object.isRequired,
+  intl: PropTypes.shape(IntlProvider.propTypes).isRequired,
 };
 
 export default CampaignsList;
