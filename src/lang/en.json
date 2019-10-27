@@ -8,7 +8,9 @@
     "column.isActive": "Is Active",
 
     "isActive.value.yes": "Yes",
-    "isActive.value.no": "No"
+    "isActive.value.no": "No",
+
+    "endDate.disabled.placeholder": "Select Start Date"
   },
   "locale": "en",
   "formats": {}

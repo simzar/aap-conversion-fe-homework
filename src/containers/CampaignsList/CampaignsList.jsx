@@ -12,6 +12,9 @@ class CampaignsList extends Component {
     this.addCampaigns = this.addCampaigns.bind(this);
     this.mapCampaigns = this.mapCampaigns.bind(this);
     this.constructColumns = this.constructColumns.bind(this);
+    this.selectStartDate = this.selectStartDate.bind(this);
+
+    this.state = { startDate: null };
   }
 
   componentDidMount() {
@@ -58,6 +61,7 @@ class CampaignsList extends Component {
     const {
       intl: { formatMessage },
     } = this.props;
+    const { startDate } = this.state;
 
     return [
       {
@@ -77,7 +81,8 @@ class CampaignsList extends Component {
         Filter: ({ filter, onChange }) => (
           <DatePicker
             startDate={filter ? filter.value : undefined}
-            setDate={onChange}
+            setDate={(value) => this.selectStartDate(onChange, value)}
+            placeholder={formatMessage({ id: 'column.startDate' })}
           />
         ),
         filterMethod: (filter, row) => !filter || new Date(row.startDate) >= filter.value,
@@ -89,6 +94,14 @@ class CampaignsList extends Component {
           <DatePicker
             startDate={filter ? filter.value : undefined}
             setDate={onChange}
+            minDate={startDate}
+            disabled={startDate === null}
+            placeholder={formatMessage({
+              id:
+                startDate === null
+                  ? 'endDate.disabled.placeholder'
+                  : 'column.endDate',
+            })}
           />
         ),
         filterMethod: (filter, row) => !filter || new Date(row.endDate) <= filter.value,
@@ -104,6 +117,10 @@ class CampaignsList extends Component {
         filterable: false,
       },
     ];
+  }
+
+  selectStartDate(onChange, startDate) {
+    this.setState({ startDate }, () => onChange(startDate));
   }
 
   render() {
