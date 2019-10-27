@@ -1,6 +1,7 @@
 {
   "translations": {
-    "test.message": "Yay, translated!"
+    "column.name": "Name",
+    "column.age": "Age"
   },
   "locale": "en",
   "formats": {}
