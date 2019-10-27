@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Table from '../../components/Table';
+import campaigns from '../../components/Table/data';
 
 class CampaignsList extends Component {
   componentDidMount() {
@@ -11,9 +12,13 @@ class CampaignsList extends Component {
   render() {
     const { users } = this.props;
     // eslint-disable-next-line no-console
-    console.log(users);
+    const campaignsToRender = campaigns.map((campaign) => ({
+      ...campaign,
+      userName:
+        campaign.userId in users ? users[campaign.userId] : 'Unknown user',
+    }));
 
-    return <Table />;
+    return <Table data={campaignsToRender} />;
   }
 }
 

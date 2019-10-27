@@ -4,7 +4,7 @@
     "column.startDate": "Start Date",
     "column.endDate": "End Date",
     "column.Budget": "Budget",
-    "column.userId": "User ID"
+    "column.userName": "User Name"
   },
   "locale": "en",
   "formats": {}
