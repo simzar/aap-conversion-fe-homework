@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactTable from 'react-table';
+import PropTypes from 'prop-types';
+import { IntlProvider } from 'react-intl';
 import 'react-table/react-table.css';
 
 const data = [
@@ -13,26 +15,19 @@ const data = [
   },
 ];
 
-// const columns = [
-//   {
-//     Header: 'Name',
-//     accessor: 'name',
-//   },
-//   {
-//     Header: 'Age',
-//     accessor: 'age',
-//   },
-// ];
-
 const columnsToTranslate = ['column.name', 'column.age'];
 
-// eslint-disable-next-line react/prop-types
 const Table = ({ intl }) => {
-  const translatedColumns = columnsToTranslate
-    // eslint-disable-next-line react/prop-types
-    .map((id) => ({ Header: intl.formatMessage({ id }), accessor: id }));
+  const translatedColumns = columnsToTranslate.map((id) => ({
+    Header: intl.formatMessage({ id }),
+    accessor: id.split('.').pop(),
+  }));
 
   return <ReactTable data={data} columns={translatedColumns} />;
+};
+
+Table.propTypes = {
+  intl: PropTypes.shape(IntlProvider.propTypes).isRequired,
 };
 
 export default Table;
