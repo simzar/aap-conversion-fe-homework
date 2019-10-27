@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { IntlProvider } from 'react-intl';
 import matchSorter from 'match-sorter';
+import numeral from 'numeral';
 import Table from '../../components/Table';
 import DatePicker from '../../components/DatePicker';
 
@@ -115,6 +116,7 @@ class CampaignsList extends Component {
         Header: formatMessage({ id: 'column.budget' }),
         accessor: 'budget',
         filterable: false,
+        Cell: (row) => numeral(row.value).format('($ 0.00 a)'),
       },
     ];
   }
