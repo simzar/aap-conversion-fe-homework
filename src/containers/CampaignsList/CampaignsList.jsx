@@ -90,7 +90,8 @@ class CampaignsList extends Component {
             placeholder={formatMessage({ id: 'column.startDate' })}
           />
         ),
-        filterMethod: (filter, row) => !filter || new Date(row.startDate) >= filter.value,
+        // eslint-disable-next-line max-len
+        filterMethod: (filter, row) => !filter || !filter.value || new Date(row.startDate) >= filter.value,
       },
       {
         Header: formatMessage({ id: 'column.endDate' }),
@@ -109,7 +110,8 @@ class CampaignsList extends Component {
             })}
           />
         ),
-        filterMethod: (filter, row) => !filter || new Date(row.endDate) <= filter.value,
+        // eslint-disable-next-line max-len
+        filterMethod: (filter, row) => !filter || !filter.value || new Date(row.endDate) <= filter.value,
       },
       {
         Header: formatMessage({ id: 'column.isActive' }),
@@ -134,18 +136,24 @@ class CampaignsList extends Component {
       isLoading,
       isError,
       intl: { formatMessage },
+      campaigns,
     } = this.props;
-    const campaigns = this.mapCampaigns();
+    const data = this.mapCampaigns();
     const columns = this.constructColumns();
     const loadingText = formatMessage({
       id: isError ? 'users.fetchError' : 'users.loading',
     });
-    const noDataText = formatMessage({ id: 'campaigns.noData' });
+    const noDataText = formatMessage({
+      id:
+        campaigns.length === 0
+          ? 'campaigns.noData'
+          : 'campaigns.noFilteredData',
+    });
 
     return (
       <Table
         columns={columns}
-        data={campaigns}
+        data={data}
         isLoading={isLoading}
         isError={isError}
         loadingText={loadingText}

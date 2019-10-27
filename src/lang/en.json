@@ -16,7 +16,8 @@
     "users.loading": "Loading...",
     "users.unknownUser": "Unknown user",
 
-    "campaigns.noData": "Please load the campaigns"
+    "campaigns.noData": "Please load the campaigns",
+    "campaigns.noFilteredData": "No data matches the search criteria"
   },
   "locale": "en",
   "formats": {}

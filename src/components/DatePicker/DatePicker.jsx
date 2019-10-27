@@ -16,6 +16,7 @@ const DatePickerComponent = ({
     placeholderText={placeholder}
     selected={startDate}
     onChange={(date) => setDate(date)}
+    isClearable
   />
 );
 
