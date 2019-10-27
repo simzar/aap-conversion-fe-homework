@@ -19,9 +19,6 @@ class CampaignsList extends Component {
   }
 
   componentDidMount() {
-    const { fetchUsers } = this.props;
-    fetchUsers();
-
     window.AddCampaigns = this.addCampaigns;
   }
 
@@ -30,7 +27,10 @@ class CampaignsList extends Component {
   }
 
   addCampaigns(campaigns) {
-    const { loadCampaigns } = this.props;
+    const { loadCampaigns, fetchUsers, users } = this.props;
+
+    // eslint-disable-next-line no-unused-expressions
+    Object.entries(users).length > 0 || fetchUsers();
     loadCampaigns(campaigns);
   }
 
