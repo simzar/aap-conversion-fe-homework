@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/simzar/aap-conversion-fe-homework/static/css/main.7e6afcbd.chunk.css",
+    "main.js": "/simzar/aap-conversion-fe-homework/static/js/main.fce2316e.chunk.js",
+    "main.js.map": "/simzar/aap-conversion-fe-homework/static/js/main.fce2316e.chunk.js.map",
+    "runtime-main.js": "/simzar/aap-conversion-fe-homework/static/js/runtime-main.4d5a5e76.js",
+    "runtime-main.js.map": "/simzar/aap-conversion-fe-homework/static/js/runtime-main.4d5a5e76.js.map",
+    "static/css/2.11f871ab.chunk.css": "/simzar/aap-conversion-fe-homework/static/css/2.11f871ab.chunk.css",
+    "static/js/2.2d507ea9.chunk.js": "/simzar/aap-conversion-fe-homework/static/js/2.2d507ea9.chunk.js",
+    "static/js/2.2d507ea9.chunk.js.map": "/simzar/aap-conversion-fe-homework/static/js/2.2d507ea9.chunk.js.map",
+    "index.html": "/simzar/aap-conversion-fe-homework/index.html",
+    "precache-manifest.852c8503fc55c7eda81c4d088c431f61.js": "/simzar/aap-conversion-fe-homework/precache-manifest.852c8503fc55c7eda81c4d088c431f61.js",
+    "service-worker.js": "/simzar/aap-conversion-fe-homework/service-worker.js",
+    "static/css/2.11f871ab.chunk.css.map": "/simzar/aap-conversion-fe-homework/static/css/2.11f871ab.chunk.css.map",
+    "static/css/main.7e6afcbd.chunk.css.map": "/simzar/aap-conversion-fe-homework/static/css/main.7e6afcbd.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4d5a5e76.js",
+    "static/css/2.11f871ab.chunk.css",
+    "static/js/2.2d507ea9.chunk.js",
+    "static/css/main.7e6afcbd.chunk.css",
+    "static/js/main.fce2316e.chunk.js"
+  ]
+}
