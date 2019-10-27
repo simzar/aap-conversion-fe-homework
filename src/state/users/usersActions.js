@@ -23,7 +23,14 @@ export const fetchUsers = () => async (dispatch) => {
   dispatch(fetchUsersStart());
   try {
     const users = await api.fetchUsers();
-    dispatch(fetchUsersSuccess(users));
+    const usersMap = users.reduce(
+      (result, { id, name }) => ({
+        ...result,
+        [id]: name,
+      }),
+      {},
+    );
+    dispatch(fetchUsersSuccess(usersMap));
   } catch (e) {
     dispatch(fetchUsersError());
   }

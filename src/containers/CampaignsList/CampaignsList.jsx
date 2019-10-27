@@ -1,5 +1,6 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Table from '../../components/Table';
 
 class CampaignsList extends Component {
   componentDidMount() {
@@ -12,14 +13,14 @@ class CampaignsList extends Component {
     // eslint-disable-next-line no-console
     console.log(users);
 
-    return null;
+    return <Table />;
   }
 }
 
 CampaignsList.propTypes = {
   fetchUsers: PropTypes.func.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
-  users: PropTypes.array.isRequired,
+  users: PropTypes.object.isRequired,
 };
 
 export default CampaignsList;

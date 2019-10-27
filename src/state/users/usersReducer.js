@@ -5,7 +5,7 @@ import {
 } from './usersModel';
 
 const initialState = {
-  users: [],
+  users: {},
   isLoading: false,
   isError: false,
 };
@@ -14,7 +14,7 @@ const usersReducer = (state = initialState, action) => {
   switch (action.type) {
     case USERS_FETCH:
       return {
-        users: [],
+        users: {},
         isLoading: true,
         isError: false,
       };
@@ -25,7 +25,7 @@ const usersReducer = (state = initialState, action) => {
       };
     case USERS_FETCH_ERROR:
       return {
-        users: [],
+        users: {},
         isLoading: false,
         isError: true,
       };
