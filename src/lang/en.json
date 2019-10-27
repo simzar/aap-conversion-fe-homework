@@ -1,7 +1,10 @@
 {
   "translations": {
     "column.name": "Name",
-    "column.age": "Age"
+    "column.startDate": "Start Date",
+    "column.endDate": "End Date",
+    "column.Budget": "Budget",
+    "column.userId": "User ID"
   },
   "locale": "en",
   "formats": {}
