@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import 'react-table/react-table.css';
 
 const Table = ({ columns, data }) => (
-  <ReactTable data={data} columns={columns} />
+  <ReactTable data={data} columns={columns} filterable />
 );
 
 Table.propTypes = {

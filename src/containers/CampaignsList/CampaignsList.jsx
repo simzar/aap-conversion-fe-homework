@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { IntlProvider } from 'react-intl';
+import matchSorter from 'match-sorter';
 import Table from '../../components/Table';
 
 class CampaignsList extends Component {
@@ -61,10 +62,13 @@ class CampaignsList extends Component {
       {
         Header: formatMessage({ id: 'column.name' }),
         accessor: 'name',
+        filterMethod: (filter, rows) => matchSorter(rows, filter.value, { keys: ['name'] }),
+        filterAll: true,
       },
       {
         Header: formatMessage({ id: 'column.userName' }),
         accessor: 'userName',
+        filterable: false,
       },
       {
         Header: formatMessage({ id: 'column.startDate' }),
@@ -77,10 +81,12 @@ class CampaignsList extends Component {
       {
         Header: formatMessage({ id: 'column.isActive' }),
         accessor: 'isActive',
+        filterable: false,
       },
       {
         Header: formatMessage({ id: 'column.budget' }),
         accessor: 'budget',
+        filterable: false,
       },
     ];
   }
