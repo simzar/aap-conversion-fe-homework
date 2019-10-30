@@ -10,7 +10,11 @@ export const loadCampaigns = (campaigns) => async (dispatch) => {
   try {
     const validationPromises = campaigns.map((campaign) => campaignsSchema.validate(campaign));
     await Promise.all(validationPromises);
-    dispatch(setCampaigns(campaigns));
+
+    const validDateCampaigns = campaigns.filter(
+      (campaign) => new Date(campaign.startDate) <= new Date(campaign.endDate),
+    );
+    dispatch(setCampaigns(validDateCampaigns));
   } catch (e) {
     /* eslint-disable no-console */
     console.error(e.message);
