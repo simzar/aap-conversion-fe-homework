@@ -1,3 +1,14 @@
+A homework exercise. 
+Simple application that accepts list of campaigns via AddCampaigns method from the browser console.
+Example:
+###
+    AddCampaigns([
+    {"id":9,"name":"Zoomcast","startDate":"9/6/2017","endDate":"11/10/2017", "budget":301919, "userId": 8}, 
+    {"id":10,"name":"Realbridge","startDate":"3/5/2018","endDate":"10/2/2017","budget":505602, "userId": 5}
+    ]);` 
+
+It's deployed to https://simzar.github.io/aap-conversion-fe-homework using gh pages
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
