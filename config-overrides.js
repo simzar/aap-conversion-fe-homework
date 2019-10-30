@@ -2,7 +2,8 @@ const { override } = require('customize-cra');
 const useSassResourcesLoader = require('./scripts/useSassResourcesLoader');
 
 function configureJest(config) {
-  return Object.assign({}, config, {
+  return {
+    ...config,
     testPathIgnorePatterns: ['.*/__tests__/fixtures/.*', './src/vendor/*.js'],
     collectCoverageFrom: [
       'src/**/*.{js,ts,tsx}',
@@ -18,11 +19,10 @@ function configureJest(config) {
       '!src/state/sagas.ts',
       '!src/state/store.ts',
     ],
-  });
+  };
 }
 
 module.exports = {
   webpack: override(useSassResourcesLoader()),
   jest: configureJest,
 };
-

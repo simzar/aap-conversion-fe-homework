@@ -19,7 +19,6 @@ export const loadCampaigns = (campaigns) => async (dispatch) => {
     /* eslint-disable no-console */
     console.error(e.message);
     if (e.value) {
-      // eslint-disable-next-line no-console
       console.error('Campaign that failed validation: ', e.value);
     } else {
       console.error('Please provide a valid array of campaigns');

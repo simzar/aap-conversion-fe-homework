@@ -5,20 +5,19 @@ import {
 } from './usersModel';
 import api from './usersApi';
 
-const fetchUsersStart = () => ({
+export const fetchUsersStart = () => ({
   type: USERS_FETCH,
 });
 
-const fetchUsersSuccess = (users) => ({
+export const fetchUsersSuccess = (users) => ({
   type: USERS_FETCH_SUCCESS,
   payload: users,
 });
 
-const fetchUsersError = () => ({
+export const fetchUsersError = () => ({
   type: USERS_FETCH_ERROR,
 });
 
-// eslint-disable-next-line import/prefer-default-export
 export const fetchUsers = () => async (dispatch) => {
   dispatch(fetchUsersStart());
   try {
