@@ -5,6 +5,7 @@ import matchSorter from 'match-sorter';
 import numeral from 'numeral';
 import Table from '../../components/Table';
 import DatePicker from '../../components/DatePicker';
+import Flag from '../../components/Flag';
 
 class CampaignsList extends Component {
   constructor(props) {
@@ -41,10 +42,6 @@ class CampaignsList extends Component {
       intl: { formatMessage },
     } = this.props;
     const currentDate = Date.now();
-    const yesNoLabels = [
-      formatMessage({ id: 'isActive.value.yes' }),
-      formatMessage({ id: 'isActive.value.no' }),
-    ];
 
     return campaigns.map((campaign) => ({
       ...campaign,
@@ -54,9 +51,7 @@ class CampaignsList extends Component {
           : formatMessage({ id: 'users.unknownUser' }),
       isActive:
         currentDate >= new Date(campaign.startDate)
-        && currentDate <= new Date(campaign.endDate)
-          ? yesNoLabels[0]
-          : yesNoLabels[1],
+        && currentDate <= new Date(campaign.endDate),
     }));
   }
 
@@ -117,6 +112,11 @@ class CampaignsList extends Component {
         Header: formatMessage({ id: 'column.isActive' }),
         accessor: 'isActive',
         filterable: false,
+        Cell: (row) => Flag({
+          isActive: row.value,
+          labelTrue: 'isActive.value.yes',
+          labelFalse: 'isActive.value.no',
+        }),
       },
       {
         Header: formatMessage({ id: 'column.budget' }),

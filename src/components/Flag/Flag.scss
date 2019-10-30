@@ -1,0 +1,11 @@
+.label {
+  width: 100%;
+
+  &--active {
+    border-bottom: 3px solid forestgreen;
+  }
+
+  &--inactive {
+    border-bottom: 3px solid darkred;
+  }
+}
