@@ -17,7 +17,8 @@
     "react-scripts": "3.2.0",
     "react-table": "6.10.3",
     "redux": "4.0.4",
-    "redux-thunk": "2.3.0"
+    "redux-thunk": "2.3.0",
+    "yup": "0.27.0"
   },
   "devDependencies": {
     "customize-cra": "0.8.0",
