@@ -4,7 +4,8 @@
   "private": false,
   "homepage": "https://simzar.github.io/aap-conversion-fe-homework",
   "dependencies": {
-    "classnames": "2.2.6",
+    "enzyme": "3.10.0",
+    "enzyme-adapter-react-16": "1.15.1",
     "gh-pages": "2.1.1",
     "match-sorter": "4.0.2",
     "numeral": "^2.0.6",

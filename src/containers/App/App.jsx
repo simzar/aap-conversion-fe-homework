@@ -1,18 +1,15 @@
 import React from 'react';
-import classnames from 'classnames';
 import { IntlProvider } from 'react-intl';
-import styles from './app.scss';
 import DEFAULT_TRANSLATIONS from '../../lang/en.json';
 import CampaignsList from '../CampaignsList';
-
-const cx = classnames.bind(styles);
+import './app.scss';
 
 function App() {
   const { translations } = DEFAULT_TRANSLATIONS;
 
   return (
     <IntlProvider locale="en" messages={translations}>
-      <div className={cx('app')}>
+      <div className="app">
         <CampaignsList />
       </div>
     </IntlProvider>
